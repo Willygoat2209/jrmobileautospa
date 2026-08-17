@@ -99,26 +99,23 @@
   .hero-note{display:block; color:var(--gray-dim); font-size:.86rem; margin-top:18px;}
 
   /* Visual stack */
-  .visual-stack{position:relative; height:520px;}
-  @media(max-width:940px){ .visual-stack{height:420px; margin-top:20px;} }
-  @media(max-width:560px){ .visual-stack{height:360px;} }
+  .visual-stack{position:relative; height:500px;}
+  @media(max-width:940px){ .visual-stack{height:440px; margin-top:20px;} }
+  @media(max-width:560px){ .visual-stack{height:400px;} }
 
-  .float-card{
-    position:absolute; background:rgba(37,40,46,.6); border:1px solid var(--line);
-    border-radius:16px; padding:14px 16px; backdrop-filter:blur(6px);
-    box-shadow:0 20px 40px -26px rgba(0,0,0,.6); opacity:.65; z-index:1;
+  .review-card{
+    position:absolute; right:-16px; bottom:34px; width:250px; z-index:3;
+    background:var(--white); color:var(--ink); border-radius:14px; padding:16px 18px;
+    box-shadow:0 24px 40px -18px rgba(0,0,0,.5);
   }
-  .float-card .tag{display:block; font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gray-dim); font-weight:700; margin-bottom:6px;}
-  .float-card p{font-size:.82rem; color:var(--gray); line-height:1.45; margin:0;}
-  .float-review{top:0; right:6%; width:230px;}
-  .float-review .stars{color:var(--yellow); font-size:.8rem; letter-spacing:2px; margin-bottom:6px; display:block;}
-  .float-text{bottom:10%; right:0; width:240px;}
-  .float-text .bubble{background:rgba(255,199,44,.1); border-radius:10px; padding:8px 10px; margin-top:6px; font-size:.82rem; color:var(--white);}
-  .float-status{top:44%; left:-4%; width:190px; display:flex; align-items:center; gap:10px; padding:12px 14px;}
-  .float-status .dot{width:9px; height:9px; border-radius:50%; background:var(--yellow); flex:none; box-shadow:0 0 0 5px var(--yellow-soft);}
-  .float-status span{font-size:.8rem; color:var(--white); font-weight:600;}
-  @media(max-width:940px){ .float-status{display:none;} }
-  @media(max-width:700px){ .float-review, .float-text{width:180px; padding:12px 14px;} }
+  .review-card .g-row{display:flex; align-items:center; gap:8px; margin-bottom:10px;}
+  .review-card .g-row span{font-size:.78rem; color:#5F6368; font-weight:600;}
+  .review-card .stars{color:#FBBC04; font-size:.85rem; letter-spacing:1px; display:block; margin-bottom:6px;}
+  .review-card p{font-size:.82rem; color:#3C4043; line-height:1.5; margin:0 0 8px;}
+  .review-card .reviewer{display:flex; align-items:center; gap:8px;}
+  .review-card .avatar{width:22px; height:22px; border-radius:50%; background:var(--yellow); color:var(--ink); font-size:.68rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex:none;}
+  .review-card .reviewer span{font-size:.76rem; color:#5F6368; font-weight:500;}
+  @media(max-width:700px){ .review-card{width:210px; padding:14px 16px; right:0;} }
 
   .frame-wrap{
     position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
@@ -275,19 +272,17 @@
       <p class="hero-note">or text Juan / Rodrigo to book</p>
     </div>
     <div class="visual-stack">
-      <div class="float-card float-review">
+      <div class="review-card">
+        <div class="g-row">
+          <svg width="16" height="16" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.6H24v9.1h11.9c-.5 2.8-2.1 5.1-4.4 6.7v5.5h7.1c4.2-3.8 6.5-9.5 6.5-16.7z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.5-3.8-12.2-9H4.5v5.7C8.1 41.1 15.4 46 24 46z"/><path fill="#FBBC04" d="M11.8 28.3c-.4-1.3-.7-2.7-.7-4.3s.3-3 .7-4.3v-5.7H4.5C3 16.9 2 20.3 2 24s1 7.1 2.5 10z"/><path fill="#EA4335" d="M24 10.7c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.4 2 8.1 6.9 4.5 13.9l7.3 5.7c1.7-5.2 6.5-8.9 12.2-8.9z"/></svg>
+          <span>Google Reviews</span>
+        </div>
         <span class="stars">★★★★★</span>
-        <span class="tag">Google Review</span>
         <p>"Left my truck looking brand new — showed up on time and detailed it right in my driveway."</p>
-      </div>
-      <div class="float-card float-text">
-        <span class="tag">Text Thread</span>
-        <div class="bubble">Can you do 2:00pm today? I'm at home all afternoon.</div>
-        <div class="bubble" style="background:rgba(34,214,224,.1);">We'll be there — Rodrigo's on his way now.</div>
-      </div>
-      <div class="float-card float-status">
-        <span class="dot"></span>
-        <span>Booking slots open this week</span>
+        <div class="reviewer">
+          <span class="avatar">M</span>
+          <span>Marcus T. · Little Rock</span>
+        </div>
       </div>
       <div class="frame-wrap">
         <div class="frame">
