@@ -7,16 +7,18 @@
 <meta name="description" content="JR Mobile Auto Spa brings professional car detailing to your driveway in Little Rock, AR. Call or text Juan or Rodrigo to book.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#15171B;
     --bg-2:#1C1F24;
     --bg-3:#25282E;
     --line:rgba(255,255,255,.08);
-    --yellow:#FFC72C;
-    --yellow-soft:rgba(255,199,44,.14);
-    --ink:#15171B;
+    --yellow:#F5C543;
+    --yellow-soft:rgba(245,197,67,.14);
+    --cyan:#17B9C6;
+    --cyan-soft:rgba(23,185,198,.12);
+    --ink:#1A1A16;
     --white:#F6F4EC;
     --gray:#9BA1A8;
     --gray-dim:#6E747B;
@@ -32,7 +34,7 @@
   }
   a{color:inherit; text-decoration:none;}
   img{max-width:100%; display:block;}
-  h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; line-height:1.08; letter-spacing:-.01em;}
+  h1,h2,h3{font-family:'Inter',sans-serif; font-weight:700; line-height:1.08; letter-spacing:-.02em;}
   .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
   section{padding:110px 0;}
   @media(max-width:720px){ section{padding:64px 0;} }
@@ -45,7 +47,7 @@
   /* Buttons */
   .btn{
     display:inline-flex; align-items:center; gap:10px;
-    font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:.95rem;
+    font-family:'Inter',sans-serif; font-weight:700; font-size:.95rem;
     padding:16px 30px; border-radius:100px; transition:transform .18s ease, background .18s ease;
     cursor:pointer; border:none;
   }
@@ -58,13 +60,12 @@
   /* Nav */
   header{position:sticky; top:0; z-index:50; background:rgba(21,23,27,.88); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
   .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 0;}
-  .brand{display:flex; align-items:center; gap:10px;}
-  .logo-mark{
-    width:32px; height:32px; border-radius:9px; background:var(--yellow);
-    color:var(--ink); display:flex; align-items:center; justify-content:center;
-    font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:.85rem; flex:none;
+  .brand{display:flex; align-items:center;}
+  .logo-plate{
+    background:var(--white); border-radius:10px; padding:7px 14px;
+    display:inline-flex; align-items:center; line-height:0;
   }
-  .brand-word{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:1.05rem;}
+  .logo-img{height:32px; width:auto; display:block;}
   nav.links{display:flex; align-items:center; gap:28px;}
   nav.links a{color:var(--gray); font-size:.9rem; font-weight:500; transition:color .15s;}
   nav.links a:hover{color:var(--white);}
@@ -76,49 +77,68 @@
   @media(max-width:880px){ nav.links{display:none;} .nav-phone{display:none;} }
 
   /* Hero */
-  .hero{padding:90px 0 60px; position:relative; overflow:hidden;}
+  .hero{padding:80px 0 40px; position:relative; overflow:hidden;}
   .hero::before{
-    content:""; position:absolute; top:-200px; left:50%; width:900px; height:600px;
-    background:radial-gradient(circle, var(--yellow-soft), transparent 65%);
+    content:""; position:absolute; top:-260px; right:-160px; width:1000px; height:800px;
+    background:radial-gradient(circle, var(--cyan-soft), transparent 60%);
     pointer-events:none;
   }
-  .hero-grid{position:relative; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;}
+  .hero::after{
+    content:""; position:absolute; top:-100px; right:220px; width:700px; height:700px;
+    background:radial-gradient(circle, var(--yellow-soft), transparent 62%);
+    pointer-events:none;
+  }
+  .hero-grid{position:relative; display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center;}
   @media(max-width:940px){ .hero-grid{grid-template-columns:1fr;} }
   .hero-copy{position:relative; z-index:2;}
-  .hero h1{font-size:clamp(2.6rem,5.4vw,4rem); margin-bottom:22px;}
+  .hero h1{font-weight:600; font-size:clamp(2.6rem,5.4vw,3.6rem); margin-bottom:22px; letter-spacing:-.02em;}
   .hero h1 .line-1{display:block; color:var(--white);}
   .hero h1 .line-2{display:block; color:var(--yellow);}
-  .hero p.lead{margin-bottom:34px;}
+  .hero p.lead{margin-bottom:34px; font-size:1.05rem;}
   .hero-ctas{display:flex; align-items:center; gap:20px; flex-wrap:wrap;}
-  .hero-note{color:var(--gray-dim); font-size:.86rem;}
+  .hero-note{display:block; color:var(--gray-dim); font-size:.86rem; margin-top:18px;}
 
-  .scribble{position:absolute; z-index:3; pointer-events:none;}
-  .scribble-1{top:36%; left:44%; width:150px; transform:rotate(-8deg);}
-  @media(max-width:940px){ .scribble-1{display:none;} }
+  /* Visual stack */
+  .visual-stack{position:relative; height:520px;}
+  @media(max-width:940px){ .visual-stack{height:420px; margin-top:20px;} }
+  @media(max-width:560px){ .visual-stack{height:360px;} }
 
-  .frame-wrap{position:relative;}
+  .float-card{
+    position:absolute; background:rgba(37,40,46,.6); border:1px solid var(--line);
+    border-radius:16px; padding:14px 16px; backdrop-filter:blur(6px);
+    box-shadow:0 20px 40px -26px rgba(0,0,0,.6); opacity:.65; z-index:1;
+  }
+  .float-card .tag{display:block; font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gray-dim); font-weight:700; margin-bottom:6px;}
+  .float-card p{font-size:.82rem; color:var(--gray); line-height:1.45; margin:0;}
+  .float-review{top:0; right:6%; width:230px;}
+  .float-review .stars{color:var(--yellow); font-size:.8rem; letter-spacing:2px; margin-bottom:6px; display:block;}
+  .float-text{bottom:10%; right:0; width:240px;}
+  .float-text .bubble{background:rgba(255,199,44,.1); border-radius:10px; padding:8px 10px; margin-top:6px; font-size:.82rem; color:var(--white);}
+  .float-status{top:44%; left:-4%; width:190px; display:flex; align-items:center; gap:10px; padding:12px 14px;}
+  .float-status .dot{width:9px; height:9px; border-radius:50%; background:var(--yellow); flex:none; box-shadow:0 0 0 5px var(--yellow-soft);}
+  .float-status span{font-size:.8rem; color:var(--white); font-weight:600;}
+  @media(max-width:940px){ .float-status{display:none;} }
+  @media(max-width:700px){ .float-review, .float-text{width:180px; padding:12px 14px;} }
+
+  .frame-wrap{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:340px; z-index:2;
+  }
+  @media(max-width:560px){ .frame-wrap{width:280px;} }
   .frame{
-    position:relative; border-radius:26px; padding:3px;
-    background:linear-gradient(135deg, var(--yellow), #6b5518 60%, var(--bg-3));
-    transform:rotate(2.5deg);
-    box-shadow:0 40px 70px -30px rgba(0,0,0,.7);
+    position:relative; border-radius:28px; padding:3px;
+    background:linear-gradient(160deg, var(--yellow), var(--cyan) 130%);
+    box-shadow:0 40px 80px -30px rgba(0,0,0,.75);
   }
-  .frame-inner{background:var(--bg-2); border-radius:24px; overflow:hidden;}
-  .frame-bar{display:flex; align-items:center; gap:6px; padding:14px 16px; border-bottom:1px solid var(--line);}
-  .frame-bar span{width:9px; height:9px; border-radius:50%; background:var(--bg-3);}
-  .frame-bar span:nth-child(1){background:#5F6470;}
-  .frame-bar span:nth-child(2){background:#5F6470;}
-  .frame-bar span:nth-child(3){background:var(--yellow);}
-  .frame-media{width:100%; aspect-ratio:4/3; background:var(--bg-3); display:block;}
+  .frame-inner{background:var(--bg-2); border-radius:25px; overflow:hidden;}
+  .frame-bar{display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--line);}
+  .frame-bar strong{font-size:.85rem; font-weight:700; color:var(--white);}
+  .frame-bar .x{color:var(--gray-dim); font-size:1rem; line-height:1;}
+  .frame-media{width:100%; aspect-ratio:4/5; background:var(--bg-3); display:block;}
   .frame-media img{width:100%; height:100%; object-fit:cover; display:block;}
-  .frame-caption{
-    position:absolute; left:-18px; bottom:-18px; background:var(--bg-3); border:1px solid var(--line);
-    border-radius:16px; padding:14px 18px; display:flex; align-items:center; gap:12px;
-    box-shadow:0 20px 30px -18px rgba(0,0,0,.6); max-width:230px;
-  }
-  .frame-caption .dot{width:10px; height:10px; border-radius:50%; background:var(--yellow); flex:none; box-shadow:0 0 0 5px var(--yellow-soft);}
-  .frame-caption span{font-size:.8rem; color:var(--gray); font-weight:500;}
-  @media(max-width:600px){ .frame-caption{display:none;} }
+  .frame-foot{display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-top:1px solid var(--line);}
+  .frame-foot span{font-size:.76rem; color:var(--gray-dim);}
+  .frame-foot .badge{background:var(--yellow); color:var(--ink); font-size:.7rem; font-weight:700; padding:5px 10px; border-radius:100px;}
 
   /* Trust row */
   .trust-row{border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:26px 0;}
@@ -155,7 +175,7 @@
   .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:30px; position:relative;}
   @media(max-width:820px){ .steps{grid-template-columns:1fr;} }
   .step{position:relative; padding-top:14px;}
-  .step .step-num{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:2.6rem; color:transparent; -webkit-text-stroke:1.5px var(--yellow); margin-bottom:16px; display:block;}
+  .step .step-num{font-family:'Inter',sans-serif; font-weight:800; font-size:2.6rem; color:transparent; -webkit-text-stroke:1.5px var(--yellow); margin-bottom:16px; display:block;}
   .step h3{font-size:1.15rem; margin-bottom:10px;}
   .step p{color:var(--gray); font-size:.92rem;}
 
@@ -167,7 +187,7 @@
   .plan.featured{border-color:var(--yellow); box-shadow:0 30px 50px -30px rgba(255,199,44,.35);}
   .plan-badge{position:absolute; top:-13px; left:28px; background:var(--yellow); color:var(--ink); font-size:.7rem; font-weight:700; padding:6px 14px; border-radius:100px; letter-spacing:.03em;}
   .plan h3{font-size:1.2rem;}
-  .plan .price{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:2.4rem; margin:16px 0 4px;}
+  .plan .price{font-family:'Inter',sans-serif; font-weight:800; font-size:2.4rem; margin:16px 0 4px;}
   .plan .price small{font-size:.72rem; color:var(--gray-dim); font-weight:500; text-transform:uppercase; letter-spacing:.04em;}
   .plan .desc{color:var(--gray); font-size:.88rem; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--line);}
   .plan ul{list-style:none; margin-bottom:26px; flex:1;}
@@ -185,7 +205,7 @@
   .team-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
   @media(max-width:640px){ .team-grid{grid-template-columns:1fr;} }
   .team-card{background:var(--bg-2); border:1px solid var(--line); border-radius:24px; padding:26px; display:flex; align-items:center; gap:20px;}
-  .avatar{width:64px; height:64px; border-radius:18px; background:var(--yellow-soft); color:var(--yellow); display:flex; align-items:center; justify-content:center; font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:1.5rem; flex:none;}
+  .avatar{width:64px; height:64px; border-radius:18px; background:var(--yellow-soft); color:var(--yellow); display:flex; align-items:center; justify-content:center; font-family:'Inter',sans-serif; font-weight:800; font-size:1.5rem; flex:none;}
   .team-card h3{font-size:1.1rem; margin-bottom:2px;}
   .team-card .role{color:var(--gray-dim); font-size:.78rem; text-transform:uppercase; letter-spacing:.05em; margin-bottom:8px;}
   .team-card a{color:var(--yellow); font-weight:700; font-size:.92rem;}
@@ -214,7 +234,7 @@
   .footer-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; padding-bottom:44px;}
   @media(max-width:760px){ .footer-grid{grid-template-columns:1fr;} }
   .footer-brand{display:flex; align-items:center; gap:10px; margin-bottom:16px;}
-  .footer-brand span{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:1.05rem;}
+  .footer-brand .logo-img{height:38px;}
   .footer-desc{color:var(--gray); font-size:.9rem; max-width:300px;}
   footer h4{font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-dim); margin-bottom:16px;}
   footer ul{list-style:none;}
@@ -228,8 +248,7 @@
 <header>
   <div class="wrap nav">
     <a class="brand" href="#top">
-      <span class="logo-mark">JR</span>
-      <span class="brand-word">JR Mobile Auto Spa</span>
+      <span class="logo-plate"><img class="logo-img" src="jrmobilelogo.png" alt="JR Mobile Auto Spa"></span>
     </a>
     <nav class="links">
       <a href="#services">Services</a>
@@ -239,9 +258,8 @@
       <a href="#faq">FAQ</a>
     </nav>
     <div class="nav-right">
-      <span class="nav-divider"></span>
       <a class="nav-phone" href="tel:5013529823">(501) 352-9823</a>
-      <a class="btn btn-yellow" href="tel:5013529823" style="padding:11px 22px; font-size:.85rem;">Book Now</a>
+      <a class="btn btn-yellow" href="tel:5013529823" style="padding:11px 22px; font-size:.85rem;">Book Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
 </header>
@@ -249,27 +267,39 @@
 <section class="hero" id="top">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <h1><span class="line-1">We Bring The</span><span class="line-2">Shine To You.</span></h1>
-      <p class="lead">Professional mobile detailing that comes to your driveway — exterior wash, interior shampoo, paint correction, and ceramic coating, anywhere in Little Rock, AR.</p>
+      <h1><span class="line-1">It's Time To</span><span class="line-2">Feel Brand New.</span></h1>
+      <p class="lead">We bring the wash, the wax, and the shine straight to your driveway. You relax — we'll take care of the detail.</p>
       <div class="hero-ctas">
-        <a class="btn btn-yellow" href="tel:5013529823">Call (501) 352-9823</a>
-        <span class="hero-note">or text Juan / Rodrigo to book</span>
+        <a class="btn btn-yellow" href="tel:5013529823">Get Detailed Today <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
+      <p class="hero-note">or text Juan / Rodrigo to book</p>
     </div>
-    <div class="frame-wrap">
-      <svg class="scribble scribble-1" viewBox="0 0 150 150" fill="none">
-        <path d="M75 20 C90 35 95 45 110 45 C95 50 90 60 90 78 C80 65 70 65 55 72 C65 60 65 50 52 38 C68 42 75 35 75 20Z" stroke="#FFC72C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-        <path d="M115 40 L135 28 M118 52 L140 52" stroke="#FFC72C" stroke-width="3" stroke-linecap="round"/>
-      </svg>
-      <div class="frame">
-        <div class="frame-inner">
-          <div class="frame-bar"><span></span><span></span><span></span></div>
-          <div class="frame-media">
-            <img src="landingpage.webp" alt="JR Mobile Auto Spa detailing work">
+    <div class="visual-stack">
+      <div class="float-card float-review">
+        <span class="stars">★★★★★</span>
+        <span class="tag">Google Review</span>
+        <p>"Left my truck looking brand new — showed up on time and detailed it right in my driveway."</p>
+      </div>
+      <div class="float-card float-text">
+        <span class="tag">Text Thread</span>
+        <div class="bubble">Can you do 2:00pm today? I'm at home all afternoon.</div>
+        <div class="bubble" style="background:rgba(34,214,224,.1);">We'll be there — Rodrigo's on his way now.</div>
+      </div>
+      <div class="float-card float-status">
+        <span class="dot"></span>
+        <span>Booking slots open this week</span>
+      </div>
+      <div class="frame-wrap">
+        <div class="frame">
+          <div class="frame-inner">
+            <div class="frame-bar"><strong>Today's Detail</strong><span class="x">✕</span></div>
+            <div class="frame-media">
+              <img src="landingpage.webp" alt="JR Mobile Auto Spa detailing work">
+            </div>
+            <div class="frame-foot"><span>Little Rock, AR</span><span class="badge">Complete</span></div>
           </div>
         </div>
       </div>
-      <div class="frame-caption"><span class="dot"></span><span>Booking slots open this week in Little Rock</span></div>
     </div>
   </div>
 </section>
@@ -477,7 +507,9 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <div class="footer-brand"><span class="logo-mark">JR</span><span>JR Mobile Auto Spa</span></div>
+        <div class="footer-brand">
+          <span class="logo-plate"><img class="logo-img" src="jrmobilelogo.png" alt="JR Mobile Auto Spa"></span>
+        </div>
         <p class="footer-desc">Our goal is to give your vehicle the shine it deserves — one driveway at a time.</p>
       </div>
       <div>
